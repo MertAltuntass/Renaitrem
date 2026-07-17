@@ -1,0 +1,16 @@
+# .NET build çıktıları
+[Bb]in/
+[Oo]bj/
+publish/
+*.user
+*.suo
+.vs/
+
+# Yayınlanmış tek-dosya çıktıları
+*.publish/
+
+# Geçici / log
+*.log
+
+# Claude yerel ayarları
+**/.claude/settings.local.json

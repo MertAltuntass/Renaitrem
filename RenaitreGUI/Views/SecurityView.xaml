@@ -1,0 +1,30 @@
+<Page x:Class="RenaitreGUI.Views.SecurityView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}">
+
+    <Grid Margin="28,20,28,22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Margin="0,0,0,18">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="SECURITY POSTURE" FontFamily="Cascadia Mono, Consolas"
+                           FontSize="24" FontWeight="Bold" Foreground="#FFFFFF"
+                           Effect="{StaticResource GlowMagenta}"/>
+                <TextBlock x:Name="TxtStatus" Text="taranıyor..." FontFamily="Cascadia Mono, Consolas"
+                           FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,6,0,0"/>
+            </StackPanel>
+            <Button Content="↻ Yeniden Tara" Style="{StaticResource ActionButtonStyle}"
+                    HorizontalAlignment="Right" VerticalAlignment="Center" Click="Scan_Click"/>
+        </Grid>
+
+        <!-- Sonuç listesi -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="ResultsList"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

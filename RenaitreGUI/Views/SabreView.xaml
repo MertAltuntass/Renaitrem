@@ -1,0 +1,55 @@
+<Page x:Class="RenaitreGUI.Views.SabreView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}">
+
+    <Grid Margin="32,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="SABRE — OVERKILL" Foreground="{StaticResource AccentRedBrush}"
+                   FontFamily="Cascadia Mono, Consolas" FontSize="18" FontWeight="Bold" Margin="0,0,0,4"/>
+
+        <!-- Ciddi uyarı -->
+        <Border Grid.Row="1" Background="#200000" BorderBrush="{StaticResource AccentRedBrush}"
+                BorderThickness="2" CornerRadius="4" Padding="16,12" Margin="0,0,0,24">
+            <StackPanel>
+                <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="13" FontWeight="Bold"
+                           Foreground="{StaticResource AccentRedBrush}"
+                           Text="⚠️  UYARI — BU İŞLEM GERİ ALINAMAZ" Margin="0,0,0,8"/>
+                <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                           Foreground="{StaticResource TextPrimaryBrush}" TextWrapping="Wrap"
+                           Text="Bu modül sistem dosyalarını, temp klasörlerini, Windows Update önbelleklerini ve çeşitli sistem dizinlerini temizler. Silinen dosyalar kurtarılamaz. Yalnızca ne yaptığını biliyorsan ve kasıtlı olarak kullan."/>
+            </StackPanel>
+        </Border>
+
+        <!-- Onay kutusu -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,24">
+            <CheckBox x:Name="ConfirmCheck"
+                      Content="Evet, riskleri anlıyorum ve devam etmek istiyorum."
+                      Foreground="{StaticResource TextPrimaryBrush}"
+                      FontFamily="Cascadia Mono, Consolas" FontSize="12"
+                      Margin="0,0,0,12"/>
+            <Button x:Name="RunSabreBtn" Content="🔥  SABRE'yi Çalıştır"
+                    Style="{StaticResource DangerButtonStyle}"
+                    FontSize="14" Padding="24,12" HorizontalAlignment="Left"
+                    IsEnabled="False" Click="RunSabre_Click"/>
+        </StackPanel>
+
+        <!-- Terminal -->
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="OUTPUT" Foreground="{StaticResource TextMutedBrush}"
+                       FontFamily="Cascadia Mono, Consolas" FontSize="10" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <TextBox x:Name="TerminalOutput" Grid.Row="1" Style="{StaticResource TerminalStyle}"
+                     Text="> Sabre module loaded. Check the box above to enable.&#xa;"/>
+        </Grid>
+    </Grid>
+</Page>

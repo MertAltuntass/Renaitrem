@@ -1,0 +1,218 @@
+<Page x:Class="RenaitreGUI.Views.NetworkView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}">
+
+    <Grid Margin="32,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="220"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="NETWORK TOOLS" Foreground="{StaticResource AccentGreenBrush}"
+                   FontFamily="Cascadia Mono, Consolas" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Araç grid -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,0,0,16">
+            <WrapPanel>
+                <!-- Güvenli araçlar -->
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="IP Configuration" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="ipconfig /all — full network info" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Run" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="ipconfig /all"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Running Processes &amp; Services" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="tasklist + sc query" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Processes" Style="{StaticResource ActionButtonStyle}"
+                                    Click="RunTool_Click" Tag="tasklist" Margin="0,0,8,0"/>
+                            <Button Content="Services" Style="{StaticResource ActionButtonStyle}"
+                                    Click="RunTool_Click" Tag="sc query type= service"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Network Connections" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Active connections, ports, PIDs" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="netstat -ano" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="netstat -ano"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="System Information" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Detaylı sistem bilgisi — Desktop'a kaydeder" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="systeminfo" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="systeminfo"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Public IP Address" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="wtfismyip.com üzerinden public IP" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Get Public IP" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="GET_PUBLIC_IP"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Driver List" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Yüklü sürücüleri listeler" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="driverquery" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="driverquery"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Wi-Fi Profilleri" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Bu makinede kayıtlı ağlar + şifreleri" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Wi-Fi Şifreleri" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="WIFI_PROFILES"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Upgrade Everything" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="winget upgrade --all" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Upgrade All" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="winget upgrade --all --accept-source-agreements"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Tehlikeli araçlar (kırmızı) -->
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12"
+                        BorderBrush="{StaticResource AccentRedBrush}">
+                    <StackPanel>
+                        <TextBlock Text="⚠️ Network Reset" Foreground="{StaticResource AccentRedBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="IP, Winsock, DNS, ARP sıfırlar. Dikkatli kullan!" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Network Reset" Style="{StaticResource DangerButtonStyle}"
+                                Click="DangerTool_Click" Tag="NETWORK_RESET"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12"
+                        BorderBrush="{StaticResource AccentRedBrush}">
+                    <StackPanel>
+                        <TextBlock Text="⚠️ Windows Update Clean" Foreground="{StaticResource AccentRedBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Windows Update geçmişini temizler" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Clean WU" Style="{StaticResource DangerButtonStyle}"
+                                Click="DangerTool_Click" Tag="WIN_UPDATE_CLEAN"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Print Queue Clear" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Yazıcı kuyruğunu temizler" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Clear Print Queue" Style="{StaticResource ActionButtonStyle}"
+                                Click="RunTool_Click" Tag="PRINT_QUEUE"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Kill Application" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Yanıt vermeyen uygulamayı kapat" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,8"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="KillAppBox" Grid.Column="0" Margin="0,0,8,0"
+                                     Background="{StaticResource BgPrimaryBrush}"
+                                     Foreground="{StaticResource TextPrimaryBrush}"
+                                     BorderBrush="{StaticResource BorderBrush2}"
+                                     Padding="6,4" FontFamily="Cascadia Mono, Consolas" FontSize="11"/>
+                            <Button Grid.Column="1" Content="Kill" Style="{StaticResource DangerButtonStyle}"
+                                    Padding="8,4" Click="KillApp_Click"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Chrome Data Clear" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Chrome cache, history, cookies siler" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,12"/>
+                        <Button Content="Clear Chrome Data" Style="{StaticResource ActionButtonStyle}"
+                                Click="DangerTool_Click" Tag="CHROME_CLEAR"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource ToolCardStyle}" Width="220" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="Telemetry Control" Foreground="{StaticResource TextPrimaryBrush}"
+                                   FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Windows 10 veri toplama servisleri" Foreground="{StaticResource TextMutedBrush}"
+                                   FontSize="11" TextWrapping="Wrap" Margin="0,4,0,8"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Disable" Style="{StaticResource DangerButtonStyle}"
+                                    Click="RunTool_Click" Tag="TELEMETRY_DISABLE" Margin="0,0,8,0" Padding="8,6"/>
+                            <Button Content="Enable" Style="{StaticResource ActionButtonStyle}"
+                                    Click="RunTool_Click" Tag="TELEMETRY_ENABLE" Padding="8,6"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
+
+        <!-- Terminal -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" Margin="0,0,0,8">
+                <TextBlock Text="OUTPUT" Foreground="{StaticResource TextMutedBrush}"
+                           FontFamily="Cascadia Mono, Consolas" FontSize="10" FontWeight="SemiBold" DockPanel.Dock="Left"/>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button x:Name="StopBtn" Content="Stop" Style="{StaticResource DangerButtonStyle}"
+                            Padding="12,4" FontSize="11" Margin="0,0,8,0" Click="StopBtn_Click" IsEnabled="False"/>
+                    <Button Content="Clear" Style="{StaticResource ActionButtonStyle}"
+                            Padding="12,4" FontSize="11" Click="ClearBtn_Click"/>
+                </StackPanel>
+            </DockPanel>
+            <TextBox x:Name="TerminalOutput" Grid.Row="1" Style="{StaticResource TerminalStyle}"
+                     Text="> Select a network tool above.&#xa;"/>
+        </Grid>
+    </Grid>
+</Page>
