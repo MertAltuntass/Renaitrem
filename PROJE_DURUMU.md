@@ -86,7 +86,7 @@ RenaitreGUI/
 ## Nasıl Çalıştırılır?
 
 ```powershell
-cd "C:\Users\merta\Desktop\All in one\Github\Renaitre\RenaitreGUI"
+cd RenaitreGUI
 dotnet build
 .\bin\Debug\net8.0-windows\RenaitreSabre.exe   # UAC → Evet
 ```

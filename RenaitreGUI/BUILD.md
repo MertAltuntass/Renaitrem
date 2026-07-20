@@ -15,7 +15,7 @@ dotnet --version
 
 Proje klasörüne git:
 ```
-cd "C:\Users\merta\Desktop\All in one\Github\Renaitre\RenaitreGUI"
+cd RenaitreGUI
 ```
 
 İlk derleme (NuGet paketlerini indirir):
